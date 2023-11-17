@@ -1,0 +1,7 @@
+body {
+    font-size: 36;
+    color: white;
+    background-color: black;
+    display: grid;
+    place-content: center;
+}

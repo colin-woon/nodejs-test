@@ -15,6 +15,34 @@ const PORT = process.env.PORT || 3500
 
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method);
+
+    //--Get extension name from url
+    const extension = path.extname(req.url);
+
+    //--Then findout what contentType it is and assign to it
+    let contentType
+    switch (extension) {
+        case '.css':
+            contentType = 'text/css';
+            break;
+        case '.js':
+            contentType = 'text/javascript';
+            break;
+        case '.json':
+            contentType = 'application/json';
+            break;
+        case '.jpg':
+            contentType = 'image/jpeg';
+            break;
+        case '.png':
+            contentType = 'image/png';
+            break;
+        case '.txt':
+            contentType = 'text/plain';
+            break;
+        default:
+            contentType = 'text/html';
+    }
 });
 
 //--MUST Add a http request listener at the end of .js file
