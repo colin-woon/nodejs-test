@@ -13,9 +13,24 @@ const myEmitter = new Emitter();
 //--If hosted on another server, will have own PORT, OR, just use 3500
 const PORT = process.env.PORT || 3500
 
+const serveFile = async (filePath, contentType, res) => {
+    try {
+        const rawData = await fsPromises.readFile(filePath, 'utf8');
+        const data = contentType === 'application/json'
+            ? JSON.parse(rawData) : rawData;
+        res.writeHead(200, { 'Content-Type': contentType });
+        // sends the data back
+        res.end(contentType === 'application/json' ? JSON.stringify(data) : data);
+    } catch (error) {
+        console.log(error);
+        res.statusCode = 500;
+        res.end();
+    }
+}
+
+
 const server = http.createServer((req, res) => {
-    console.log(req.url, req.method, 'tests');
-    console.log('test');
+    console.log(req.url, req.method);
 
     //--Get extension name from url
     const extension = path.extname(req.url);
@@ -57,32 +72,39 @@ const server = http.createServer((req, res) => {
 
     //--Make .html extension not required in the browser
     //--Meaning= if extension not found and the last character of the url is not '/'(means its finding a missing file), add .html at the end of the url
-    //Eg: nodejs-webserver/views/notRealFile > nodejs-webserver/views/notRealFile.html 
+    //--Eg: nodejs-webserver/views/fakeFile > nodejs-webserver/views/fakeFile.html 
     if (!extension && req.url.slice(-1) !== '/') filePath += '.html';
-    // const fileExists = fs.existsSync(filePath);
 
-    // if (fileExists) {
-    //     // serve the file
-    // } else {
-    //     //404
-    //     //301 redirect
-    //     console.log(path.parse(filePath))
+    const fileExists = fs.existsSync(filePath);
+    if (fileExists) {
+        serveFile(filePath, contentType, res)
+    } else {
+        switch (path.parse(filePath).base) {
+            case 'fakeFile.html':
+                res.writeHead(301, { 'Location': '/new-page.html' });
+                res.end();
+                break;
+            case 'www-page.html':
+                res.writeHead(301, { 'Location': '/' });
+                res.end();
+                break;
+            default:
+                serveFile(path.join(__dirname, 'views', '404.html'), 'text/html', res)
+            //serve 404
+        }
+        //404
+        //301 redirect
+    }
+
+    //-- EXAMPLE OUTPUT for path.parse(filePath)
+    // {
+    //     root: '/',
+    //     dir: '/home/colin/nodejs-test/nodejs-webserver/views',
+    //     base: 'fakeFile.html',
+    //     ext: '.html',
+    //     name: 'fakeFile'
     // }
 
-    fsPromises.access(filePath, fs.constants.F_OK)
-        .then(() => {
-            // The file exists, serve the file
-            // Read the file and send it in the response
-            res.writeHead(200, { 'Content-Type': contentType });
-            fs.createReadStream(filePath).pipe(res);
-        })
-        .catch((err) => {
-            // The file does not exist, log the parsed filePath
-            console.log('File not found:', path.parse(filePath));
-            // Send a 404 response
-            res.writeHead(404, { 'Content-Type': 'text/html' });
-            res.end('<h1>404: File Not Found</h1>');
-        });
 });
 
 //--MUST Add a http request listener at the end of .js file
