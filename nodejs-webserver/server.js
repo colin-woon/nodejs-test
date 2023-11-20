@@ -15,11 +15,13 @@ const PORT = process.env.PORT || 3500
 
 const serveFile = async (filePath, contentType, res) => {
     try {
-        const rawData = await fsPromises.readFile(filePath, 'utf8');
+        //--Check contentType for image while reading file, utf8 is not image
+        const rawData = await fsPromises.readFile(filePath, contentType.includes('image') ? '' : 'utf8');
+        //--Check data type for JSON
         const data = contentType === 'application/json'
             ? JSON.parse(rawData) : rawData;
         res.writeHead(200, { 'Content-Type': contentType });
-        // sends the data back
+        //--Sends the data back
         res.end(contentType === 'application/json' ? JSON.stringify(data) : data);
     } catch (error) {
         console.log(error);
