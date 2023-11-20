@@ -9,7 +9,7 @@ const EventEmitter = require('events')
 class Emitter extends EventEmitter { };
 //--Initialize object, seperated this way to promote code reusability and encourage the principle of seperation of concerns
 const myEmitter = new Emitter();
-
+myEmitter.on('log', (msg, fileName) => logEvents(msg, fileName));
 //--If hosted on another server, will have own PORT, OR, just use 3500
 const PORT = process.env.PORT || 3500
 
@@ -20,11 +20,14 @@ const serveFile = async (filePath, contentType, res) => {
         //--Check data type for JSON
         const data = contentType === 'application/json'
             ? JSON.parse(rawData) : rawData;
-        res.writeHead(200, { 'Content-Type': contentType });
+        res.writeHead(
+            filePath.includes('404.html') ? 404 : 200, //Setting 404 status code
+            { 'Content-Type': contentType });
         //--Sends the data back
         res.end(contentType === 'application/json' ? JSON.stringify(data) : data);
     } catch (error) {
         console.log(error);
+        myEmitter.emit('log', `${error.name}\t${error.message}`, 'errorLog.txt');
         res.statusCode = 500;
         res.end();
     }
@@ -33,6 +36,7 @@ const serveFile = async (filePath, contentType, res) => {
 
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method);
+    myEmitter.emit('log', `${req.url}\t${req.method}`, 'reqLog.txt');
 
     //--Get extension name from url
     const extension = path.extname(req.url);

@@ -4,4 +4,5 @@
 4. Set filepath configurations for the server
 5. Create serve file function to read file contents
 6. Read JSON files
-7. 
+7. Load images from source
+8. Log http requests and errors
