@@ -8,3 +8,6 @@ This is a repo on how I learned NodeJS, it is arranged in alphabetical order
 6. Read JSON files
 7. Load images from source
 8. Log http requests and errors
+9. Creating and using middlewares
+10. Creating routers
+11. MVC model
