@@ -6,3 +6,4 @@
 6. Read JSON files
 7. Load images from source
 8. Log http requests and errors
+9. Using and creating middlewares
