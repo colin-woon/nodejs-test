@@ -42,7 +42,7 @@ app.use('/subdir', express.static(path.join(__dirname, '/public')));
 //--All requests for subdir will be handled here since the router is configured
 app.use('/', require('./routes/root'));
 app.use('/subdir', require('./routes/subdir'));
-// app.use('/employees', require('./routes/api/employees'));
+app.use('/employees', require('./routes/api/employees'));
 
 //--.get for GET only, .all for GET,POST,PUT,DELETE etc.
 app.all('*', (req, res) => {
