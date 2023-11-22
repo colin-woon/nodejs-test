@@ -7,3 +7,19 @@
 20231120	11:55:14	8ddd77cc-81ed-4644-a2ba-b3cb6bea732b	/nopr	GET
 20231120	11:55:14	9b054185-d006-4f18-acb2-dc251492bf7e	/css/style.css	GET
 20231120	11:55:28	d352fe19-fcf9-4011-a35c-873fc63adb1d	/nopr	GET
+20231122	09:50:09	4d8a99c9-4671-4cbd-b31d-677b11e0d549	GET	undefined	/new-page.html
+20231122	09:50:09	4bd2b704-0a5d-457c-924a-108e16149d07	GET	undefined	/img/taipei101romaintrystram.jpg
+20231122	09:54:03	bde1dfde-f4ba-4626-89a9-1e80c03c1eac	GET	undefined	/new-page.html
+20231122	09:54:03	aa15a5de-9969-4a05-9bbb-18ce895ab73d	GET	undefined	/img/taipei101romaintrystram.jpg
+20231122	09:54:42	37510a7b-08eb-49c5-9402-a493276f7a10	OPTIONS	https://www.google.com	/
+20231122	09:54:42	79f52999-1870-4198-af71-b2ac0e25f881	GET	https://www.google.com	/
+20231122	09:58:53	683252f9-fc2d-4ed7-8af5-93e82fc97282	GET	undefined	/new-page.html
+20231122	09:58:53	e5bb7022-ab2a-4e82-95a5-47b36827d041	GET	undefined	/img/taipei101romaintrystram.jpg
+20231122	09:58:59	8bcee614-48ed-42f8-972a-fb8041385009	OPTIONS	https://www.google.com	/
+20231122	09:58:59	1378610b-ec3a-46b8-a12a-ba3e541ed2c1	GET	https://www.google.com	/
+20231122	10:20:26	2a7b9814-5f07-42f3-b000-da0c39a764ba	OPTIONS	https://www.google.com	/
+20231122	10:20:26	1d1ba12b-75a0-4d0c-922a-7e0e37f26372	GET	https://www.google.com	/
+20231122	10:24:38	ef07d697-f510-47f1-84d3-611689edc8e3	OPTIONS	https://www.google.com	/
+20231122	10:24:38	18c39ac4-63a7-477b-8c0e-a6e4f107b02d	GET	https://www.google.com	/
+20231122	10:24:49	f85ae5ae-e751-410c-94e8-d67cf4eeec3e	OPTIONS	https://www.google.com	/
+20231122	10:24:49	c73cce25-9c59-484b-b17a-ea1abd8a0c38	GET	https://www.google.com	/
