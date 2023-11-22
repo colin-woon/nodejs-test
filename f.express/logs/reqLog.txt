@@ -34,3 +34,9 @@
 20231122	10:45:14	15be5516-cd05-4644-be0e-c54658adb574	GET	undefined	/new-page.html
 20231122	10:45:20	598a41b7-7aa9-4b69-b285-e127dc62a6a8	GET	undefined	/new-page.html
 20231122	10:45:20	51e78c92-a653-4f90-813a-6889db1fe876	GET	undefined	/img/taipei101romaintrystram.jpg
+20231122	10:58:37	764a9a87-3a0e-4903-b3d4-4f1e77016730	GET	undefined	/hellllll
+20231122	10:58:37	78489a88-bc33-49c6-adcc-54edf20b84f2	GET	undefined	/css/style.css
+20231122	10:59:07	8eb19018-671b-4050-89cf-3bce51d02255	GET	undefined	/
+20231122	10:59:07	4e5f7a87-343a-4d5d-b59f-81d9058b516b	GET	undefined	/css/style.css
+20231122	10:59:12	ae8612ba-962b-4a69-9065-fa75c62e4e6e	GET	undefined	/j
+20231122	10:59:12	baf3ffbd-189c-4d2d-9803-1fbd73d4f3ee	GET	undefined	/css/style.css

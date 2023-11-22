@@ -80,8 +80,16 @@ const tres = (req, res, next) => {
 
 app.get('/chain(.html)?', [uno, dos, tres]);
 
-app.get('/*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html')); //If without specifying status code, it will be 200 since the 404.html file exists
+//--.get for GET only, .all for GET,POST,PUT,DELETE etc.
+app.all('*', (req, res) => {
+    res.status(404); //If without specifying status code, it will be 200 since the 404.html file exists
+    if (req.accepts('html')) {
+        res.sendFile(path.join(__dirname, 'views', '404.html'));
+    } else if (req.accepts('json')) {
+        res.json({ error: '404 not found la' });
+    } else {
+        res.type('txt').send('404 not found at all la');
+    }
 })
 
 app.use(errorHandler);
