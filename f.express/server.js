@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const { logger } = require('./middleware/logEvents');
+const errorHandler = require('./middleware/errorHandler');
 const PORT = process.env.PORT || 3500;
 
 //--Custom middleware logger (must have next param in function, next passes the control to the next handler)
@@ -14,7 +15,8 @@ const whitelist = ['https://www.<yoursite>.com', 'http://127.0.0.1:5500', 'http:
 // origin in the parameter means the source of request, where it came from
 const corsOption = {
     origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) !== -1) { //checks if request source is in whitelist
+        //REMOVE !origin before deployment! only for development use
+        if (whitelist.indexOf(origin) !== -1 || !origin) { //checks if request source is in whitelist
             callback(null, true); //first param is usually error handler, since its true, it is set to null, the origin source is sent back
         }
         else {
@@ -26,7 +28,7 @@ const corsOption = {
 
 app.use(cors(corsOption));
 
-//--Built in middleware for url-encoded data/form data
+//--Built in middleware for url-encoded data (https://example.com/search?query=url+encoded&limit=10, key value pair, query=url+encoded & limit=10)/form data (HTML form) 
 //--contentType: application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
 
@@ -81,5 +83,7 @@ app.get('/chain(.html)?', [uno, dos, tres]);
 app.get('/*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html')); //If without specifying status code, it will be 200 since the 404.html file exists
 })
+
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server is listening, running on port ${PORT}`));

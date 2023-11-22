@@ -23,3 +23,14 @@
 20231122	10:24:38	18c39ac4-63a7-477b-8c0e-a6e4f107b02d	GET	https://www.google.com	/
 20231122	10:24:49	f85ae5ae-e751-410c-94e8-d67cf4eeec3e	OPTIONS	https://www.google.com	/
 20231122	10:24:49	c73cce25-9c59-484b-b17a-ea1abd8a0c38	GET	https://www.google.com	/
+20231122	10:29:57	dc044fd4-2577-4a2f-a229-a50338d2bab6	GET	undefined	/new-page.html
+20231122	10:35:32	cb7ac0d3-93dd-467c-9db8-d66356c78771	GET	undefined	/new-page.html
+20231122	10:35:51	0ee3aa9d-b718-4fce-b1ee-1cb7e3c15bc7	GET	undefined	/new-page.html
+20231122	10:36:01	c4d4265c-9f39-4447-a1d0-fab0c93a1f1a	GET	undefined	/new-page.html
+20231122	10:38:35	c1b9c69e-497b-41b6-8fcc-dfdd7ccfc812	GET	undefined	/new-page.html
+20231122	10:38:35	9678a0d5-5fd9-4548-adf5-7b2b6b7e051c	GET	undefined	/img/taipei101romaintrystram.jpg
+20231122	10:44:57	3a67dc99-d021-4483-8ea0-d7784a7d41ac	GET	undefined	/new-page.html
+20231122	10:44:57	4de55893-01db-45c6-ac28-2bdc89eed1c8	GET	undefined	/img/taipei101romaintrystram.jpg
+20231122	10:45:14	15be5516-cd05-4644-be0e-c54658adb574	GET	undefined	/new-page.html
+20231122	10:45:20	598a41b7-7aa9-4b69-b285-e127dc62a6a8	GET	undefined	/new-page.html
+20231122	10:45:20	51e78c92-a653-4f90-813a-6889db1fe876	GET	undefined	/img/taipei101romaintrystram.jpg
