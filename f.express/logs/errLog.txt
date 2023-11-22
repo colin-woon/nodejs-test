@@ -1,0 +1,1 @@
+20231122	10:45:14	f15650d0-8d54-4152-b8cc-3794d5123c70	Error: Callback not allowed by CORS

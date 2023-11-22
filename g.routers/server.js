@@ -36,49 +36,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //--Serve static files (eg: images)
-app.use(express.static(path.join(__dirname, '/public')));
+app.use('/', express.static(path.join(__dirname, '/public')));
+app.use('/subdir', express.static(path.join(__dirname, '/public')));
 
-//--^ = Begin with
-//--$ = End with
-//--| = OR
-//--(<words>)? = Optional
-app.get('^/$|/index(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
-})
-
-app.get('/new-page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
-})
-
-app.get('/fake-page.html', (req, res) => {
-    res.redirect(301, '/new-page.html'); //302 by default (301 means permanently redirect)
-})
-
-//--Route Handlers
-app.get('/hello(.html)?', (req, res, next) => {
-    console.log("tried to load hello.html");
-    next();
-}, (req, res) => { //--Not a common way to chain to another handler
-    res.send('Hello World I was alive');
-})
-
-//--Chaining Route Handlers
-const uno = (req, res, next) => {
-    console.log('uno');
-    next();
-}
-
-const dos = (req, res, next) => {
-    console.log('dos');
-    next();
-}
-
-const tres = (req, res, next) => {
-    console.log('tres');
-    res.send("Done!");
-}
-
-app.get('/chain(.html)?', [uno, dos, tres]);
+//--All requests for subdir will be handled here since the router is configured
+app.use('/', require('./routes/root'));
+app.use('/subdir', require('./routes/subdir'));
+app.use('/employees', require('./routes/api/employees'));
 
 //--.get for GET only, .all for GET,POST,PUT,DELETE etc.
 app.all('*', (req, res) => {
