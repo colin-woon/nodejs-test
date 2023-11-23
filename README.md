@@ -57,4 +57,3 @@ h. MVC
 	- created controller for API (export functions into routes api for handling)
 	- simulate data model
 	- implemented CRUD logic
-
