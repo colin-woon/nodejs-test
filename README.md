@@ -1,4 +1,4 @@
-This is a repo on how I learned NodeJS, the guide is based on Dave Gray Node JS and Express tutorials, it is arranged in alphabetical order, here are the takeaways:  
+This is a repo on how I learned NodeJS in 8 days, the guide is based on Dave Gray Node JS and Express tutorials, it is arranged in alphabetical order, here are the takeaways:  
   
 a. callback-functions  
 	- basic callback function  
